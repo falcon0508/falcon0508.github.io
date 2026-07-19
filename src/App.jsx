@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import About from "./components/About";
@@ -10,19 +12,55 @@ import Footer from "./components/Footer";
 
 import "./App.css";
 
+const routes = {
+  "/": Hero,
+  "/about": About,
+  "/education": Education,
+  "/experience": Experience,
+  "/projects": Projects,
+  "/skills": Skills,
+  "/contact": Contact,
+};
+
+function getRouteFromHash() {
+  const hash = window.location.hash.replace(/^#/, "");
+
+  if (!hash || hash === "/") {
+    return "/";
+  }
+
+  return hash.startsWith("/") ? hash : `/${hash}`;
+}
+
 function App() {
+  const [route, setRoute] = useState(getRouteFromHash());
+
+  useEffect(() => {
+    const handleHashChange = () => {
+      setRoute(getRouteFromHash());
+    };
+
+    window.addEventListener("hashchange", handleHashChange);
+
+    if (!window.location.hash) {
+      window.location.hash = "#/";
+    }
+
+    return () => window.removeEventListener("hashchange", handleHashChange);
+  }, []);
+
+  const ActivePage = routes[route] ?? routes["/"];
+
   return (
-    <>
-      <Navbar />
-      <Hero />
-      <About />
-      <Education />
-      <Experience />
-      <Projects />
-      <Skills />
-      <Contact />
+    <div className="app-shell">
+      <Navbar activeRoute={route} />
+
+      <main className="main-content">
+        <ActivePage />
+      </main>
+
       <Footer />
-    </>
+    </div>
   );
 }
 

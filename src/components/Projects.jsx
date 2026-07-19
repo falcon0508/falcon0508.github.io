@@ -1,91 +1,105 @@
+const projects = [
+  {
+    title: "Financial Stock Analysis",
+    stack: "Python, Flask, React, TensorFlow, Scikit-learn, REST APIs",
+    image: "/project-stock-analysis.png",
+    imageAlt: "Dashboard or chart view from the financial stock analysis project",
+    url: "https://financial-stock-analysis.onrender.com/",
+    bullets: [
+      "Developed an LSTM model for stock price prediction",
+      "Built a Flask API for live predictions",
+      "Created an interactive React dashboard with stock charts",
+      "Deployed the application online",
+    ],
+  },
+  {
+    title: "Strava Analyzer",
+    stack: "Python, Scikit-learn, Streamlit, OAuth, Machine Learning",
+    image: "/project-strava.png",
+    imageAlt: "Analytics dashboard or activity visualization for the Strava Analyzer",
+    url: "https://strava-analyzers.streamlit.app/",
+    bullets: [
+      "Built a Random Forest model to predict running pace",
+      "Developed a Streamlit dashboard for activity analysis",
+      "Integrated the Strava API with OAuth authentication",
+      "Automated retrieval and visualization of workout data",
+    ],
+  },
+  {
+    title: "MiniSpark",
+    stack: "C, Data Processing, Operating Systems, Concurrency",
+    bullets: [
+      "Built a simplified Spark-like data processing engine",
+      "Implemented multithreaded task scheduling",
+      "Used locks and condition variables for synchronization",
+      "Executed parallel data processing workflows",
+    ],
+  },
+  {
+    title: "COVID-19 Mortality Analysis",
+    stack: "R, Data Analysis, Data Visualization, Statistics",
+    image: "/project-covid-analysis.png",
+    imageAlt: "Data visualization or statistical chart from the COVID-19 analysis",
+    bullets: [
+      "Collected and cleaned COVID-19 datasets",
+      "Compared mortality rates between prison and general populations",
+      "Performed hypothesis testing",
+      "Visualized findings using R",
+    ],
+  },
+  {
+    title: "Campus Route Seeking Program",
+    stack: "Java, JavaFX, Algorithms",
+    bullets: [
+      "Implemented Dijkstra's shortest path algorithm",
+      "Developed a graphical interface with JavaFX",
+      "Connected frontend and backend into a complete application",
+    ],
+  },
+];
+
 function Projects() {
-    return (
-        <section id="projects">
-            <h2>Projects</h2>
+  return (
+    <section className="page page--split">
+      <div className="page-intro">
+        <p className="eyebrow">Projects</p>
+        <h1>Builds that show dedication</h1>
+      </div>
 
-            <div className="card">
-                <h3>Rosenberg Autism App</h3>
-                <h4>Python • SQLite • Kivy • REST APIs</h4>
-                <p>
-                    • Designed a multithreaded architecture for real-time eye tracking
-                    <br />
-                    • Integrated the Pupil Labs API to stream gaze data
-                    <br />
-                    • Built an interactive researcher interface with Kivy
-                    <br />
-                    • Stored experiment data using SQLite
-                </p>
+      <div className="card-grid card-grid--two project-grid">
+        {projects.map((project) => (
+          <article className="panel panel--project" key={project.title}>
+            <div className="panel-media panel-media--tall">
+              <img src={project.image} alt={project.imageAlt} />
             </div>
 
-            <div className="card">
-                <h3>Financial Stock Analysis</h3>
-                <h4>React • Flask • TensorFlow • Scikit-learn</h4>
-                <p>
-                    • Developed an LSTM model for stock price prediction
-                    <br />
-                    • Built a Flask API for live predictions
-                    <br />
-                    • Created an interactive React dashboard with stock charts
-                    <br />
-                    • Deployed the application online
-                </p>
+            <div className="panel-header">
+              <div>
+                <h2>{project.title}</h2>
+                <p className="panel-meta">{project.stack}</p>
+                {project.url ? (
+                  <a
+                    className="project-link"
+                    href={project.url}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Link to live app
+                  </a>
+                ) : null}
+              </div>
             </div>
 
-            <div className="card">
-                <h3>Strava Analyzer</h3>
-                <h4>Python • Streamlit • OAuth • Machine Learning</h4>
-                <p>
-                    • Built a Random Forest model to predict running pace
-                    <br />
-                    • Developed a Streamlit dashboard for activity analysis
-                    <br />
-                    • Integrated the Strava API with OAuth authentication
-                    <br />
-                    • Automated retrieval and visualization of workout data
-                </p>
-            </div>
-
-            <div className="card">
-                <h3>MiniSpark</h3>
-                <h4>C • Operating Systems • Concurrency</h4>
-                <p>
-                    • Built a simplified Spark-like data processing engine
-                    <br />
-                    • Implemented multithreaded task scheduling
-                    <br />
-                    • Used locks and condition variables for synchronization
-                    <br />
-                    • Executed parallel data processing workflows
-                </p>
-            </div>
-
-            <div className="card">
-                <h3>COVID-19 Mortality Analysis</h3>
-                <h4>R • Data Analysis • Statistics</h4>
-                <p>
-                    • Collected and cleaned COVID-19 datasets
-                    <br />
-                    • Compared mortality rates between prison and general populations
-                    <br />
-                    • Performed hypothesis testing
-                    <br />
-                    • Visualized findings using R
-                </p>
-            </div>
-
-            <div className="card">
-                <h3>Campus Route Seeking Program</h3>
-                <h4>Java • JavaFX • Algorithms</h4>
-                <p>
-                    • Implemented Dijkstra's shortest path algorithm
-                    <br />
-                    • Developed a graphical interface with JavaFX
-                    <br />
-                    • Connected frontend and backend into a complete application
-                </p>
-            </div>
-        </section>
-    );
+            <ul className="bullet-list">
+              {project.bullets.map((bullet) => (
+                <li key={bullet}>{bullet}</li>
+              ))}
+            </ul>
+          </article>
+        ))}
+      </div>
+    </section>
+  );
 }
 
 export default Projects;

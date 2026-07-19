@@ -1,17 +1,9 @@
 function Footer() {
-
-    return (
-
-        <footer>
-
-            <p>
-                © 2026 Dylan Ong
-            </p>
-
-        </footer>
-
-    );
-
+  return (
+    <footer className="site-footer">
+      <p>© 2026 Dylan Ong</p>
+    </footer>
+  );
 }
 
 export default Footer;

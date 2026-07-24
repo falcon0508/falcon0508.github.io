@@ -536,8 +536,10 @@
 }
 
 .interest-carousel {
-  aspect-ratio: 16 / 10;
+  aspect-ratio: 1 / 1;
+  width: 70%;
   position: relative;
+  margin: 0 auto;
   margin-bottom: 0.9rem;
   border-radius: 0.9rem;
   border: 1px solid rgba(62, 46, 38, 0.08);

@@ -21,32 +21,49 @@ const focusAreas = [
 const interests = [
   {
     category: "Running",
+    listType: "unordered",
     images: [
       "/hobbies/running-1.jpg",
       "/hobbies/running-2.jpg",
       "/hobbies/running-3.jpg",
     ],
     items: [
-      "Running regularly since 2019.",
-      "Longest distance: Half-Marathon",
-      "Favorite route: Lake Mendota Lakeshore path",
+      `I have been running regularly since 2019. I enjoy running 
+      long-distances outdoors, with a half marathon being my longest 
+      race so far. Around Madison, my favorite place to run is the 
+      Lake Mendota Lakeshore Path, especially during the fall.`,
     ],
   },
   {
-    category: "Food",
-    images: ["/hobbies/food-1.jpg", "/hobbies/food-2.jpg", "/hobbies/food-3.jpg"],
+    category: "Favorite Food",
+    listType: "ordered",
+    images: ["/hobbies/food3x3.jpg",],
     items: [
-      "Favorite food: Soto ayam/daging",
-      "Favorite cuisines: Indonesian, Indian, Japanese, Mexican",
+      "Soto Daging/Ayam (Indonesian chicken/beef soup)",
+      "Indomie Goreng",
+      "Babi Guling (Indonesian suckling pig roast)",
+      "Ramen",
+      "Salmon Sashimi",
+      "Butter Chicken",
+      "Hainanese Chicken Rice",
+      "Salt and Vinegar Kettle Chips",
+      "Nastar (Indonesian pineapple pastry)"
     ],
   },
   {
     category: "Favorite Games",
-    images: ["/hobbies/game-1.jpeg", "/hobbies/game-2.jpg", "/hobbies/game-3.jpg"],
+    listType: "ordered",
+    images: ["/hobbies/game3x3.jpg",],
     items: [
-      "Super Smash Bros. Ultimate",
+      "Mario Party DS",
+      "Mario Kart DS",
+      "Broken Sword: Shadow of the Templars - The Director's Cut",
       "Kirby Super Star Ultra",
+      "Minecraft",
       "Mobile Legends: Bang Bang",
+      "Super Smash Bros. Ultimate",
+      "Sdorica",
+      "Umamusume: Pretty Derby",
     ],
   },
 ];
@@ -173,11 +190,20 @@ function About() {
               </div>
             </div>
 
-            <ul className="interest-list interest-list--spotlight">
-              {activeInterest.items.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
+            {activeInterest.listType === "ordered" ? (
+              <ol className="interest-list interest-list--spotlight">
+                {activeInterest.items.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ol>
+            ) : (
+              <div className="interest-text">
+                {activeInterest.items.map((item) => (
+                  <p key={item}>{item}</p>
+                ))}
+              </div>
+            )}
+            
           </div>
 
           <div className="interest-pills">

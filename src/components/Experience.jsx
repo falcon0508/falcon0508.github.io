@@ -78,7 +78,7 @@ function Experience() {
                 <div className="panel-header">
                   <div>
                     <h2>{entry.company}</h2>
-                    <p className="panel-meta">Promotional track</p>
+                    <p className="panel-meta">Epistemic Analytics Lab</p>
                   </div>
                   <span className="pill">Part-time</span>
                 </div>

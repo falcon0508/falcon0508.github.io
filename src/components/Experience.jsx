@@ -80,7 +80,7 @@ function Experience() {
                     <h2>{entry.company}</h2>
                     <p className="panel-meta">Epistemic Analytics Lab</p>
                   </div>
-                  <span className="pill">Part-time</span>
+                  <span className="pill">Internship</span>
                 </div>
 
                 <div className="role-timeline">
